@@ -730,7 +730,7 @@ for the backend</p>
 
     <div class="doc doc-contents ">
 
-        <p>Returns the number of jobs waiting to be schedules on the backend</p>
+        <p>Returns the number of jobs waiting to be scheduled on the backend</p>
 
 
     <p><span class="doc-section-title">Returns:</span></p>
@@ -843,6 +843,7 @@ for the backend</p>
     <span class="n">shots</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1024</span><span class="p">,</span>
     <span class="n">no_modify</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="n">qasm3</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">queued</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="o">**</span><span class="n">options</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MQPJob</span>
 </code></pre></div>
@@ -913,6 +914,20 @@ for the backend</p>
             <td>
               <div class="doc-md-description">
                 <p>use QASM3 format to send the circuit</p>
+              </div>
+            </td>
+            <td>
+                  <code>False</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code>queued</code></td>
+            <td>
+                  <code>bool</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>enqueue (for limited time) the job while backend is offline</p>
               </div>
             </td>
             <td>

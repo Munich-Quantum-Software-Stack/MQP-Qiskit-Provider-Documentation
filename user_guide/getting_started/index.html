@@ -436,6 +436,24 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#checking-the-number-of-pending-jobs-on-a-backend" class="md-nav__link">
+    <span class="md-ellipsis">
+      Checking the Number of Pending Jobs on a Backend
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#queuing-a-job-when-backend-is-offline" class="md-nav__link">
+    <span class="md-ellipsis">
+      Queuing a Job when Backend is Offline
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#monitor-job-status" class="md-nav__link">
     <span class="md-ellipsis">
       Monitor Job Status
@@ -771,6 +789,24 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#checking-the-number-of-pending-jobs-on-a-backend" class="md-nav__link">
+    <span class="md-ellipsis">
+      Checking the Number of Pending Jobs on a Backend
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#queuing-a-job-when-backend-is-offline" class="md-nav__link">
+    <span class="md-ellipsis">
+      Queuing a Job when Backend is Offline
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#monitor-job-status" class="md-nav__link">
     <span class="md-ellipsis">
       Monitor Job Status
@@ -884,6 +920,17 @@
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">qiskit</span><span class="w"> </span><span class="kn">import</span> <span class="n">QuantumCircuit</span><span class="p">,</span> <span class="n">compiler</span>
 <span class="n">transpiled_circuit</span> <span class="o">=</span> <span class="n">compiler</span><span class="o">.</span><span class="n">transpile</span><span class="p">(</span><span class="n">circuit</span><span class="p">,</span> <span class="n">backend</span><span class="p">,</span> <span class="n">optimization_level</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 <span class="n">job</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">transpiled_circuit</span><span class="p">,</span> <span class="n">shots</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">no_modify</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="checking-the-number-of-pending-jobs-on-a-backend">Checking the Number of Pending Jobs on a Backend<a class="headerlink" href="#checking-the-number-of-pending-jobs-on-a-backend" title="Permanent link">&para;</a></h3>
+<p>To determine if a backend is overloaded, you can check the number of pending jobs using the <code>num_pending_jobs</code> property.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of pending jobs:&quot;</span><span class="p">,</span> <span class="n">backend</span><span class="o">.</span><span class="n">num_pending_jobs</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="queuing-a-job-when-backend-is-offline">Queuing a Job when Backend is Offline<a class="headerlink" href="#queuing-a-job-when-backend-is-offline" title="Permanent link">&para;</a></h3>
+<p>By default, a job scheduled on a backend with an offline status will be cancelled. To queue a job on an offline backend, use the <code>queued=True</code> flag. This will ensure that the job is enqueued and will be executed once the backend becomes available.</p>
+<div class="admonition note">
+<p class="admonition-title">The job is queued for limited time and cancelled if the backend is still offline.</p>
+</div>
+<div class="highlight"><pre><span></span><code><span class="n">job</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">circuit</span><span class="p">,</span> <span class="n">shots</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">queued</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
 <h3 id="monitor-job-status">Monitor Job Status<a class="headerlink" href="#monitor-job-status" title="Permanent link">&para;</a></h3>
 <p>You can check the status of your job as follows. The status indicates the current stage (e.g., QUEUED, INITIALIZING, DONE).</p>
